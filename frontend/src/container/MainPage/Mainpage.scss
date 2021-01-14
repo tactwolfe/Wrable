@@ -1,0 +1,93 @@
+.main{
+    grid-row: 1/-1;
+    grid-column: 1/-1;
+    height: 100%;
+    
+ 
+
+    display: grid;
+    grid-template-columns: 25vw 1fr;
+
+    // background-color: white;
+
+    &_navigation{
+        grid-column: 1/2 ;
+        background-color: #3b3b3b;
+        position: fixed;
+        height: 100%;
+        width: 25vw;
+        
+    }
+    &_nav{
+
+        &_links{
+            list-style: none;
+            text-align: start;
+
+            &:not(:last-child){
+                margin-bottom: 3rem;
+            }
+           
+        }
+        &_link{
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-top: .7rem;
+            display: block;
+            transition: all .3s;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+
+            &:hover{
+                color: green;
+            }
+            .active{
+                color: aqua;
+            }
+
+            
+        }
+
+        &_logo{
+            width: 8rem;
+            height: 6rem;
+            justify-self: start;
+            margin: 2rem auto .5rem;
+        }
+
+        &_name{
+            color:  rgb(92, 98, 226);
+            font-weight: bold;
+            font-size: 3rem;
+
+            &:hover{
+                color: orangered;
+            }
+        }
+
+    }
+
+    &_postholder{
+        grid-column: 2/3;
+        display: grid;
+        row-gap: 1rem;
+        grid-template-rows: repeat(auto-fit , 15rem);
+        height: 100%;
+        grid-auto-rows: 15rem;
+        box-sizing: border-box;
+        
+    }
+   
+    
+}
+
+.logout{
+    margin-top: 5rem;
+    
+}
+
+.active{
+    color: aqua;
+}

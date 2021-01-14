@@ -1,0 +1,91 @@
+.new-post {
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 25vw 1fr;
+      grid-template-columns: 25vw 1fr;
+}
+
+.new-post_navigation {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  background-color: #3b3b3b;
+  position: fixed;
+  height: 100%;
+  width: 25vw;
+}
+
+.new-post_nav_links {
+  list-style: none;
+  text-align: start;
+}
+
+.new-post_nav_links:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+.new-post_nav_link {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-top: .7rem;
+  display: block;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+}
+
+.new-post_nav_link:hover {
+  color: green;
+}
+
+.new-post_nav_link .active {
+  color: aqua;
+}
+
+.new-post_nav_logo {
+  width: 8rem;
+  height: 6rem;
+  -ms-grid-column-align: start;
+      justify-self: start;
+  margin: 2rem auto .5rem;
+}
+
+.new-post_nav_name {
+  color: #5c62e2;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.new-post_nav_name:hover {
+  color: orangered;
+}
+
+.new-post_postholder {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  display: -ms-grid;
+  display: grid;
+  row-gap: 1rem;
+  -ms-grid-rows: (15rem)[auto-fit];
+      grid-template-rows: repeat(auto-fit, 15rem);
+  height: 100%;
+  grid-auto-rows: 15rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.logout {
+  margin-top: 5rem;
+}
+
+.active {
+  color: aqua;
+}
+/*# sourceMappingURL=NewPostCOntainer.css.map */

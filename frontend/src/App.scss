@@ -1,0 +1,21 @@
+.App {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 12.5rem repeat(2,1fr) 12.5rem;
+    // grid-template-rows: 12.5rem 65vh 12.5rem repeat(auto-fill, 15rem);
+    grid-template-rows: 12.5rem 65vh 1fr;
+    background-color: rgb(92, 98, 226);
+    height: 100%;
+    width: 100vw;
+  }
+
+  .logo{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    height: 6rem;
+    justify-self: start;
+    margin: 2rem;
+  }
