@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import {NavLink , Route ,Switch} from 'react-router-dom';
+import {NavLink , Route } from 'react-router-dom';
 import axios from 'axios';
 
 import './Mainpage.css';
@@ -8,65 +8,44 @@ import Logo from '../../assets/image/logo.png';
 import Logout from '../../assets/image/logout.svg';
 
 import Post from '../../component/Post/Post';
-import NewPost from '../../component/newpost/NewPost';
-
 import Aux from '../../hoc/Auxillary';
 
 
 class MainPage extends Component {
 
     state={
-        posts : [
-            {
-                key : '1',
-                name : "user 1",
-                para : "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-            },
-            {
-                key : '2',
-                name : "user 2",
-                para : "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
-            },
-            {
-                key : '3',
-                name : "user 3",
-                para : "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
-            },
-            {
-                key : '4',
-                name : "user 4",
-                para : "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
-            },
-            {
-                key : '5',
-                name : "user 5",
-                para : "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
-            },
-            {
-                key : '6',
-                name : "user 6",
-                para : "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
-            },
-            {
-                key : '7',
-                name : "user 7",
-                para : "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
-            },
-
-        ]
+        posts : []
     }
 
+    //lifecycle method that will call the fetch post method whenever our component is mounted
     componentDidMount() {
-        // axios.get()
-        // axios.get()
+        this.getPost();
+    }
+
+    //method that will fetch for us from the database
+    getPost = ()=> {
+        axios.get('/home')
+        .then((response)=>{
+            const data = response.data;
+            this.setState({post : data});
+        })
+        .catch((err)=>{
+            console.log(err);
+        });
+    }
+
+    //method that will display our post
+    displayPost = (posts)=> {
+        if(!posts.length){
+            return <h1 style={{color : "white"}}>Sorry no post Have submitted by any of our users yet !!</h1>
+        }else{
+            posts.map( post => {
+                return <Post author={post.name} posts={post.para} key={post.key}/>
+            });
+        }
     }
 
     render(){
-
-        const post = this.state.posts.map( post => {
-            return <Post author={post.name} posts={post.para} key={post.key}/>
-        });
-
         return(
             <div className="main">
                 <header className="main_navigation">
@@ -80,11 +59,11 @@ class MainPage extends Component {
                             <li className="new-post_nav_links"><NavLink to="/home/my-post" exact className="new-post_nav_link">My posts</NavLink></li>
                             <li className="main_nav_links"><NavLink to="/new-post"  className="main_nav_link">Post Something</NavLink></li>
                         </ul>
-                        <NavLink to="/" exact><img src={Logout} alt="logout" className="logout"/></NavLink>
+                        <NavLink to="/logout" exact><img src={Logout} alt="logout" className="logout"/></NavLink>
                     </nav>
                 </header>
                 <div className="main_postholder">
-                    <Route to="/home" exact  render={()=><Aux>{post}</Aux>}/>
+                    <Route to="/home" exact  render={()=><Aux>{this.displayPost(this.state.posts)}</Aux>}/>
                 </div>
             </div>
         );

@@ -31,7 +31,7 @@ class NewPostContainer extends Component {
                             <li className="new-post_nav_links"><NavLink to="/home/my-post" exact className="new-post_nav_link">My posts</NavLink></li>
                             <li className="new-post_nav_links"><NavLink to="/new-post"  className="new-post_nav_link">Post Something</NavLink></li>
                         </ul>
-                        <NavLink to="/" exact><img src={Logout} alt="logout" className="logout"/></NavLink>
+                        <NavLink to="/logout" exact><img src={Logout} alt="logout" className="logout"/></NavLink>
                     </nav>
                 </header>
                 <div className="new-post_postholder">
